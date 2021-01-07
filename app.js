@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 // New Code
 var monk = require('monk');
-var db = monk('localhost:27017/nodetest1');
+var db = monk('localhost:27017/3dw17');
 
 var indexRouter = require('./routes/index');
 
