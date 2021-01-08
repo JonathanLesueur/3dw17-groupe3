@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <ul>
+        <% for(i = 0; i < documents.length; i++) { %>
+        <li>
+            <strong><%= documents[i].fields.titre_avec_lien_vers_le_catalogue %></strong>
+            <ul>
+                <li>Auteur: <%= documents[i].fields.auteur %></li>
+            </ul>
+        </li>
+        <% } %>
+    </ul>
+  </body>
+</html>
