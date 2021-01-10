@@ -5,6 +5,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    <%- include('header'); %>
     <%- include('main-menu'); %>
     <main>
     <h1><%= title %></h1>
@@ -26,15 +27,17 @@
                     <td>
                         <% 
                             var buttonText = 'Rendre';
+                            var buttonState = 'button_off'
                             var formRoute = '/rendre';
                             if(documents[i].est_emprunte == undefined || !documents[i].est_emprunte) {
                                 buttonText = 'Emprunter';
                                 formRoute = '/emprunter';
+                                buttonState = 'button_on';
                             }
                         %>
                             <form method="post" action="<%= formRoute %>">
                                 <input name="document_id" type="hidden" value="<%= documents[i].recordid %>"/>
-                                <button name="submit" type="submit"><%= buttonText %></button>
+                                <button name="submit" class="<%= buttonState %>" type="submit"><%= buttonText %></button>
                             </form>
                     </td>
                 </tr>

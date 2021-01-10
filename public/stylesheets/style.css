@@ -8,6 +8,34 @@ a {
   color: #00B7FF;
 }
 
+header {
+    background-color: #E85412;
+}
+
+header > h1 {
+    text-align: center;
+    color: #fff;
+    margin: 0;
+    padding: 10px;
+}
+
+header > p {
+    text-align: center;
+    color: lemonchiffon;
+    font-size: 0.7rem;
+    margin-top: 2px;
+}
+
+hr {
+    display: block;
+    margin: 0;
+    border: none;
+    border-top: 3px double #fff;
+    overflow: visible;
+    text-align: center;
+    background: #E85412;
+}
+
 #menu {
     height: 56px;
     width: 100%;
@@ -63,7 +91,7 @@ h1 {
     text-transform: uppercase;
 }
 
-[type="submit"] {
+.button_on {
     border: none;
     color: #FFFFFF;
     background-color: #E85412;
@@ -74,8 +102,23 @@ h1 {
     margin: auto;
 }
 
-[type="submit"]:hover {
+.button_on:hover {
     background-color: #be460e;
+}
+
+.button_off {
+    border: none;
+    color: #000;
+    background-color: #c0f7f7;
+    border-radius: 5px;
+    padding: 4px 10px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+}
+
+.button_off:hover {
+    background-color: #7ed4d4;
 }
 
 th {
