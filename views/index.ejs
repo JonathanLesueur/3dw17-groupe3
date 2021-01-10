@@ -5,8 +5,10 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    <%- include('main-menu'); %>
+    <main>
     <h1><%= title %></h1>
-    <table style="display:block;width:50%;margin:auto auto;">
+    <table>
         <thead>
             <tr>
                 <th>Titre</th>
@@ -22,21 +24,23 @@
                     <td><%= documents[i].fields.type_de_document %></td>
                     <td><%= documents[i].fields.nombre_de_reservations %></td>
                     <td>
-                        <% if(documents[i].est_emprunte == undefined || documents[i].est_emprunte == false) { %>
-                            <form method="post" action="/emprunter">
+                        <% 
+                            var buttonText = 'Rendre';
+                            var formRoute = '/rendre';
+                            if(documents[i].est_emprunte == undefined || !documents[i].est_emprunte) {
+                                buttonText = 'Emprunter';
+                                formRoute = '/emprunter';
+                            }
+                        %>
+                            <form method="post" action="<%= formRoute %>">
                                 <input name="document_id" type="hidden" value="<%= documents[i].recordid %>"/>
-                                <button name="submit" type="submit">Emprunter</button>
+                                <button name="submit" type="submit"><%= buttonText %></button>
                             </form>
-                        <% } else { %>
-                            <form method="post" action="/rendre">
-                                <input name="document_id" type="hidden" value="<%= documents[i].recordid %>"/>
-                                <button name="submit" type="submit">Rendre</button>
-                            </form>
-                        <% }%>
                     </td>
                 </tr>
             <% } %>
         </tbody>
-    </table>>
+    </table>
+</main>
   </body>
 </html>

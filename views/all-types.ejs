@@ -11,13 +11,10 @@
     <ul>
         <% for(i = 0; i < documents.length; i++) { %>
         <li>
-            <strong><%= documents[i].fields.titre_avec_lien_vers_le_catalogue %></strong>
-            <ul>
-                <li>Auteur: <%= documents[i].fields.auteur %></li>
-            </ul>
+            <strong><%= documents[i] %></strong>
         </li>
         <% } %>
     </ul>
-</main>
+    </main>
   </body>
 </html>
