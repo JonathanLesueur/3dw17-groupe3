@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <table style="display:block;width:50%;margin:auto auto;">
+        <thead>
+            <tr>
+                <th>Nombre de réservations</th>
+                <th>Rang</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(i = 0; i < documents.length; i++) { %>
+                <tr>
+                    <td><%= documents[i].fields.nombre_de_reservations %></td>
+                    <td><%= documents[i].fields.rang %></td>
+                    <td><%= documents[i].fields.titre_avec_lien_vers_le_catalogue %></td>
+                    <td><%= documents[i].fields.auteur %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+  </body>
+</html>

@@ -53,4 +53,16 @@ router.get('/authors-n', function(req, res) {
     });
 });
 
+router.get('/no-type-de-document', function(req, res) {
+    var db = req.db;
+    var collection = db.get('documents');
+    
+    collection.find({"fields.type_de_document":null}, {}, function(e, docs){
+        res.render('no-type-de-document', {
+            'title': 'Tous les documents ayant pas de champ "type_de_document"',
+            'documents': docs
+        });
+    });
+});
+
 module.exports = router;
