@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /* GET documents page. */
-router.get('/index', function(req, res) {
+router.get('/', function(req, res) {
     var db = req.db;
     var collection = db.get('documents');
     
@@ -63,6 +63,58 @@ router.get('/no-type-de-document', function(req, res) {
             'documents': docs
         });
     });
+});
+
+
+router.post('/emprunter', function(req, res) {
+    var db = req.db;
+    var documentRecordid = req.body.document_id;
+    var collection = db.get('documents');
+    
+    collection.update({
+        "recordid" : documentRecordid
+    },
+    {
+        $set: {
+            est_emprunte: true
+        },
+        $inc: {
+            "fields.nombre_de_reservations": 1
+        }
+    },
+    function (err, doc) {
+        if (err) {
+            res.send("There was a problem adding the information to the database.");
+        }
+        else {
+            res.redirect("/");
+        }
+    });
+    
+});
+
+router.post('/rendre', function(req, res) {
+    var db = req.db;
+    var documentRecordid = req.body.document_id;
+    var collection = db.get('documents');
+
+    collection.update({
+        "recordid" : documentRecordid
+    },
+    {
+        $set: {
+            "est_emprunte": false
+        }
+    },
+    function (err, doc) {
+        if (err) {
+            res.send("There was a problem adding the information to the database.");
+        }
+        else {
+            res.redirect("/");
+        }
+    });
+    
 });
 
 module.exports = router;
